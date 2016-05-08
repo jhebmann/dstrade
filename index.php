@@ -1,9 +1,10 @@
 <?php
-include('connexion.php');
+include('cookie.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>DSTrade</title>
 </head>
 <body>
