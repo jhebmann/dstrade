@@ -5,13 +5,15 @@ include('cookie.php');
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/custom.js"></script>
     <title>DSTrade</title>
 </head>
 <body>
 <div class="question">
     <p>What is DSTrade ?</p>
 </div>
-<div class="answer">
+<div class="answer" id="test">
     <p>DSTrade is a website which wants to improve your overall Dark Souls experience by allowing you to buy or exchange
         items !</p>
 </div>

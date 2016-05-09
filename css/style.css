@@ -6,3 +6,55 @@ input.existant {
     border: 1px solid red;
     background-color: rgba(255, 0, 0, 0.2);
 }
+
+html, body{
+    background: black;
+    color: lightgrey;
+}
+
+body {
+    position: absolute;
+    right: 1%;
+    left: 1%;
+    margin: 0;
+}
+
+a{
+    color: azure;
+}
+
+a:visited{
+    color: cadetblue;
+}
+
+a:hover{
+    color: aquamarine;
+}
+
+.question, .answer{
+    text-align: center;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.question{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.answer{}
+    /*max-height: 0;
+    border: 0;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.answer.active{
+    max-height: 500px;
+    border: 1px solid lightgrey;
+}
