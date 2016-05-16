@@ -1,16 +1,17 @@
 <?php
-include('includes/cookie.php');
+include('cookie.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/custom.js"></script>
     <link rel="icon" href="lib/favicon.png" type="image/png" sizes="32x32">
     <title>DSTrade</title>
 </head>
 <body class="no-js">
-<?php include('includes/menu.php'); ?>
+<?php include('menu.php'); ?>
 <h1>~ DSTrade ~</h1>
 <div class="question">
     <p>What is DSTrade ?</p>
@@ -95,14 +96,5 @@ include('includes/cookie.php');
     <p>And since we have several accounts, we can also proceed trades between players that have a great lvl difference
         !</p>
 </div>
-<script>
-    $(".no-js").removeClass('no-js');
-
-    $(".answer").slideToggle(0);
-    $(".question").click(function () {
-        $(this).next().siblings('.answer').slideUp();
-        $(this).next().slideToggle("slow");
-    });
-</script>
 </body>
 </html>

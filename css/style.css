@@ -1,3 +1,77 @@
+@font-face {
+    font-family: optimusPrinceps;
+    src: url(../fonts/OptimusPrincepsSemiBold.ttf);
+}
+
+h1, #menu {
+    font-family: optimusPrinceps;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+td, th, p{
+    font-size: 16px;
+}
+
+#btn-menu {
+    width: 50px;
+    height: 30px;
+    left: 1%;
+    display: none;
+    position: fixed;
+    top: 90px;
+}
+#menu {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 100px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#menu {
+    position: fixed;
+    left: 1%;
+    top: 120px;
+    width: 8%;
+}
+
+#menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+#menu li {
+    display: block;
+    background-color: darkgrey;
+    border: 1px solid darkgrey;
+}
+
+#menu li:nth-child(1) {
+    border-radius: 5px 5px 0 0;
+}
+
+#menu li:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+#menu li:hover {
+    background-color: black;
+}
+
+#menu li:hover a {
+    color: aliceblue;
+}
+
+#menu li a {
+    color: black;
+    padding: 10px;
+    display: block;
+}
+
 div.existant {
     color: red;
 }
@@ -5,56 +79,226 @@ div.existant {
 input.existant {
     border: 1px solid red;
     background-color: rgba(255, 0, 0, 0.2);
+    color: white;
 }
 
-html, body{
-    background: black;
+html, body {
     color: lightgrey;
+}
+
+div, table {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+}
+
+table div {
+    background: none;
+}
+
+html {
+    background: black url('../lib/background.jpg') no-repeat fixed center;
+    background-size: cover;
 }
 
 body {
     position: absolute;
     right: 1%;
     left: 1%;
-    margin: 0;
+    margin: 0 auto;
+    width: 80%;
 }
 
-a{
+a {
     color: azure;
 }
 
-a:visited{
+a:visited {
     color: cadetblue;
 }
 
-a:hover{
+a:hover {
     color: aquamarine;
 }
 
-.question, .answer{
+.question, .answer {
     text-align: center;
-    width: 100%;
     border: 1px solid lightgrey;
     border-radius: 10px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
-.question{
+.question {
+    font-family: optimusPrinceps;
     margin-top: 20px;
-    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.answer{}
-    /*max-height: 0;
-    border: 0;
-    -webkit-transition: all .25s ease;
-    -moz-transition: all .25s ease;
-    transition: all .25s ease;
+.question p{
+    font-size: 20px;
+}
+
+.answer {
+}
+
+.no-js .question {
+    cursor: default;
+}
+
+/*max-height: 0;
+border: 0;
+-webkit-transition: all .25s ease;
+-moz-transition: all .25s ease;
+transition: all .25s ease;
 }
 
 .answer.active{
-    max-height: 500px;
+max-height: 500px;
+border: 1px solid lightgrey;
+}*/
+
+.profilediv {
+    width: 45%;
+    float: left;
     border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#account_infos {
+    float: right;
+}
+
+.deployable {
+    cursor: pointer;
+}
+
+.profilediv p {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#game_infos {
+    float: left;
+    margin-left: 25%;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+    font-family: optimusPrinceps;
+    margin: 0;
+    line-height: 50px;
+}
+
+li {
+    list-style-position: inside;
+    text-align: left;
+}
+
+ul {
+    display: inline-block;
+}
+
+.center {
+    text-align: center;
+}
+
+.successful {
+    color: aqua;
+}
+
+.btn {
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: black;
+    padding: 3px;
+}
+
+.btn:hover {
+    background-color: black;
+    color: lightgrey;
+}
+
+.btn:visited {
+    color: darkgrey;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 5px;
+    border-right: 1px solid white;
+}
+
+td {
+    border-top: 1px solid white;
+}
+
+td:last-child, th:last-child {
+    border-right: 0px;
+}
+
+.no-border td, .no-border th {
+    border: 0;
+}
+
+#cookies_banner {
+    background-color: royalblue;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    width: 80%;
+}
+
+
+
+@media screen and (min-width: 1001px) and (max-width: 1400px) {
+    #menu {
+        font-size: 1vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #btn-menu {
+        display: block;
+    }
+
+    #menu {
+        font-size: 10px;
+    }
+
+    body {
+        width: 90%;
+    }
+
+    .profilediv{
+        width: 100%;
+    }
+
+    #game_infos {
+        margin-left: 0;
+    }
+
+    h1{
+        font-size: 20px;
+    }
+
+    .question p{
+        font-size: 17px;
+    }
+
+    td, th, p{
+        font-size: 12px;
+    }
 }

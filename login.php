@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="icon" href="lib/favicon.png" type="image/png" sizes="32x32">
     <title>DSTrade</title>
 </head>
 <?php
@@ -15,12 +16,12 @@ function generateRandomString($length = 60)
     return $randomString;
 }
 
-include('cookie.php');
+include('includes/cookie.php');
 
 if (!$connected) {
     $login = "";
-    if (isset($_GET['login'])) {
-        $login = $_GET['login'];
+    if (isset($_GET['l'])) {
+        $login = $_GET['l'];
     }
     if (isset($_POST['btn-login'])) {
         $login = $_POST['loginOrMail'];
@@ -39,7 +40,7 @@ if (!$connected) {
                     header('Location: .');
                     $requete = $bdd->query($sql);
                     if ($requete == FALSE) {
-                        print("There was a problem receiving informations from the database");
+                        header('Location: error?src=' . $_SERVER['REQUEST_URI']);
                     }
                 } else {
                     print("Wrong password !");
@@ -58,7 +59,7 @@ if (!$connected) {
                             header('Location: .');
                             $requete = $bdd->query($sql);
                             if ($requete == FALSE) {
-                                print("There was a problem receiving informations from the database");
+                                header('Location: error?src=' . $_SERVER['REQUEST_URI']);
                             }
                         } else {
                             print("Wrong password !");
@@ -67,27 +68,34 @@ if (!$connected) {
                         print("This Username/Email isn't registered yet !");
                     }
                 } else {
-                    print("There was a problem receiving informations from the database");
+                    header('Location: error?src=' . $_SERVER['REQUEST_URI']);
                 }
             }
         } else {
-            print("There was a problem receiving informations from the database");
+            header('Location: error?src=' . $_SERVER['REQUEST_URI']);
         }
     }
     ?>
     <body>
+    <?php include('includes/menu.php'); ?>
+    <div id="cookies_banner">
+        <p>By logging in, you accept to use cookies on this website.</p>
+    </div>
+    <h1>Log in</h1>
     <form method="post">
-        <table>
+        <table class="no-border">
             <tr>
                 <td>
                     <div>Login or email</div>
                     <input value="<?php print($login); ?>" type="text" name="loginOrMail" placeholder="Login or Mail"
-                           required/></td>
+                           required maxlength="50" />
+                </td>
             </tr>
             <tr>
                 <td>
                     <div>Password</div>
-                    <input type="password" name="pass" placeholder="Password" required/></td>
+                    <input type="password" name="pass" placeholder="Password" required maxlength="50"/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -99,15 +107,9 @@ if (!$connected) {
             </tr>
         </table>
     </form>
-    <a href="logout">Log out</a>
     </body>
     </html>
     <?php
-} else { ?>
-    <body>
-    <p>You're already logged in as <a href="profile"><?php echo $user_infos['username']; ?></a></p>
-    <p>Click <a href=".">Here</a> to go back to hompage.</p>
-    </body>
-    </html>
-    <?php
+} else {
+        header('Location: profile/infos');
 }

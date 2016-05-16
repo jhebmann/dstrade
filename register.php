@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="icon" href="lib/favicon.png" type="image/png" sizes="32x32">
     <title>DSTrade</title>
 </head>
 <?php
@@ -12,7 +13,7 @@ $mail = "";
 $pass = "";
 $max = 1;
 
-include('cookie.php');
+include('includes/cookie.php');
 
 if (!$connected) {
     if (isset($_POST['btn-signup'])) {
@@ -29,7 +30,7 @@ if (!$connected) {
                 $loginexistant = TRUE;
             }
         } else {
-            print("There was a problem receiving informations from the database");
+            header('Location: error?src=' . $_SERVER['REQUEST_URI']);
         }
         $sql = "SELECT * FROM USERS WHERE EMAIL = '" . $mail . "';";
         $requete = $bdd->query($sql);
@@ -39,7 +40,7 @@ if (!$connected) {
                 $mailexistant = TRUE;
             }
         } else {
-            print("There was a problem receiving informations from the database");
+            header('Location: error?src=' . $_SERVER['REQUEST_URI']);
         }
         if (!$mailexistant && !$loginexistant && !$passtropcourt) {
             $sql = "SELECT max(id) FROM USERS";
@@ -52,21 +53,23 @@ if (!$connected) {
             if ($requete != FALSE) {
                 header('Location: login?l=' . $login . '');
             } else {
-                print("There was a problem receiving informations from the database");
+                header('Location: error?src=' . $_SERVER['REQUEST_URI']);
             }
         }
     }
     ?>
     <body>
+    <?php include('includes/menu.php'); ?>
+    <h1>Register</h1>
     <form method="post">
-        <table>
+        <table class="no-border">
             <tr>
                 <td>
                     <div <?php if ($loginexistant) echo 'class="existant"'; ?> >
                         Login <?php if ($loginexistant) echo 'already exists !'; ?> </div>
                     <input <?php if ($loginexistant) echo 'class="existant"';
                     echo "value='" . $login . "'" ?> type="text" name="login"
-                                                     placeholder="Login" required/></td>
+                                                     placeholder="Login" required maxlength="50" /></td>
             </tr>
             <tr>
                 <td>
@@ -74,13 +77,13 @@ if (!$connected) {
                         Email <?php if ($mailexistant) echo 'already exists !'; ?> </div>
                     <input <?php if ($mailexistant) echo 'class="existant"';
                     echo "value='" . $mail . "'" ?> type="email" name="mail" placeholder="Email"
-                                                    required/></td>
+                                                    required maxlength="50" /></td>
             </tr>
             <tr>
                 <td>
                     <div <?php if ($passtropcourt) echo 'class="existant"'; ?> >
                         Password <?php if ($passtropcourt) echo 'too short (must be at least 8 characters) !'; ?> </div>
-                    <input type="password" name="pass" placeholder="Password" required/></td>
+                    <input type="password" name="pass" placeholder="Password" required maxlength="50" /></td>
             </tr>
             <tr>
                 <td>
@@ -95,10 +98,6 @@ if (!$connected) {
     </body>
     </html>
     <?php
-} else { ?>
-    <body>
-    <p>You're already registered and logged in as <a href="profile"><?php echo $user_infos['username']; ?></a></p>
-    <p>Click <a href=".">Here</a> to go back to hompage.</p>
-    </body>
-    <?php
+} else {
+        header('Location: profile/infos');
 }
